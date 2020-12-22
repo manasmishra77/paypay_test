@@ -14,6 +14,7 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.setCornerRadius(8)
     }
     
     func configureCell(country: String, currency: String) {

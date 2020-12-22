@@ -35,7 +35,7 @@ class CurrencyListViewController: UIViewController {
     @IBAction func cuurencySelectionBtnTapped(_ sender: Any) {
         self.currencyListView.isHidden = false
         self.exchangeRateView.isHidden = true
-        self.currencyListView.reloadCurrencyListCollectionView(list: [])
+        self.viewModel.getCurrencyList()
     }
     
     
@@ -43,6 +43,7 @@ class CurrencyListViewController: UIViewController {
         currencyTF.delegate = self
         configureBody()
         self.setupHideKeyboardOnTap()
+        self.cuurencySelectionButton.setCornerRadius(5)
     }
     
     func configureBody() {
@@ -54,7 +55,7 @@ class CurrencyListViewController: UIViewController {
         let body = CurrencyList.instanceFromNib()
         body.addAsSubViewWithConstraints(self.bodyContainer)
                 
-        let size = CGSize(width: self.bodyContainer.frame.width - 20, height: 50)
+        let size = CGSize(width: self.bodyContainer.frame.width - 30, height: 50)
         
         body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.currencyList, currencyList: [], exchangeRates: [], currency: "")
         self.currencyListView = body
@@ -64,8 +65,8 @@ class CurrencyListViewController: UIViewController {
     func configureExchangeRatesList() {
         let body = CurrencyList.instanceFromNib()
         body.addAsSubViewWithConstraints(self.bodyContainer)
-        let size = CGSize(width: self.bodyContainer.frame.width/2 - 5, height: self.bodyContainer.frame.width/2 - 5)
-        body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.currencyList, currencyList: [], exchangeRates: [], currency: "")
+        let size = CGSize(width: self.bodyContainer.frame.width/2 - 10, height: 70)
+        body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.exchangeRates, currencyList: [], exchangeRates: [], currency: "")
         self.exchangeRateView = body
         body.isHidden = true
     }
@@ -80,7 +81,8 @@ extension CurrencyListViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-     
+        self.currencyListView.isHidden = true
+        self.exchangeRateView.isHidden = true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -111,6 +113,7 @@ extension CurrencyListViewController: CurrencyListVCViewModelDelegate {
         if let err = err {
             self.showAlert(withTitle: "Failed", withMessage: err.msg)
         } else {
+            self.exchangeRateView.isHidden = false
             self.exchangeRateView.reloadExchangeRateCollectionView(list: rates, currency: currency)
         }
 

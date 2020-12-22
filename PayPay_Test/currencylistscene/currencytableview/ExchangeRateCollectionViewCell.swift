@@ -14,11 +14,12 @@ class ExchangeRateCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.setCornerRadius(5)
     }
     
     func configureCell(val: Double, name: String) {
         self.currencyName.text = name
-        self.exchangeValues.text = "\(val)"
+        self.exchangeValues.text = "\(val.rounded(toPlaces: 2))"
     }
 
 }

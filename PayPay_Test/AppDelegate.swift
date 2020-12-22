@@ -14,7 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        configureRootVC()
+        
         return true
+    }
+    
+    func configureRootVC() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = CurrencyListViewController()
+        let navvc = UINavigationController(rootViewController: vc)
+        
+        self.window?.rootViewController = navvc
+        self.window?.makeKeyAndVisible()
     }
 
 

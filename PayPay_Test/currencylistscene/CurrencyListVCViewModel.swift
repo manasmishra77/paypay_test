@@ -42,7 +42,9 @@ class CurrencyListVCViewModel {
         dataStore.getExchangeRates {[weak self] (rates, err) in
             guard let self = self else {return}
             guard let rateDict = rates?.quotes else {
-                self.delegate.exchangeRatesFetched(rates: [], currency: self.selectedCurrencyID ?? "", with: AppErrors.noData(nil))
+                DispatchQueue.main.async {
+                    self.delegate.exchangeRatesFetched(rates: [], currency: self.selectedCurrencyID ?? "", with: AppErrors.noData(nil))
+                }
                 return
             }
             let multiplier = rateDict["USD\(self.selectedCurrencyID ?? "")"]
@@ -53,7 +55,9 @@ class CurrencyListVCViewModel {
                 let currencyVal = val/(multiplier ?? 1)
                 rateArr.append((currencyName, currencyVal))
             }
-            self.delegate.exchangeRatesFetched(rates: rateArr, currency: self.selectedCurrencyID ?? "", with: nil)
+            DispatchQueue.main.async {
+                self.delegate.exchangeRatesFetched(rates: rateArr, currency: self.selectedCurrencyID ?? "", with: nil)
+            }
         }
     }
     

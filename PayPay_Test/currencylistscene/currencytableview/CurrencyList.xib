@@ -2,9 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,8 +21,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wj2-44-bup">
-                    <rect key="frame" x="20" y="95" width="374" height="747"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="95" width="414" height="747"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dm6-52-oVN">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -34,12 +34,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wj2-44-bup" secondAttribute="trailing" constant="20" id="8Zi-QZ-E7F"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wj2-44-bup" secondAttribute="trailing" id="8Zi-QZ-E7F"/>
+                <constraint firstItem="wj2-44-bup" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="If5-Av-PYs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wj2-44-bup" secondAttribute="bottom" constant="20" id="J6U-2i-6rI"/>
                 <constraint firstItem="wj2-44-bup" firstAttribute="top" secondItem="Uek-k7-0Hk" secondAttribute="bottom" constant="20" id="bz9-I7-dwI"/>
                 <constraint firstItem="Uek-k7-0Hk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="lfn-iq-mTT"/>
                 <constraint firstItem="Uek-k7-0Hk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="mvY-wb-PJL"/>
-                <constraint firstItem="wj2-44-bup" firstAttribute="leading" secondItem="Uek-k7-0Hk" secondAttribute="leading" id="wa0-ZZ-cfM"/>
             </constraints>
             <connections>
                 <outlet property="currencyCollectionView" destination="wj2-44-bup" id="gpV-az-8Jp"/>
@@ -48,9 +48,4 @@
             <point key="canvasLocation" x="-67" y="146"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
