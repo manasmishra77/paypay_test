@@ -52,7 +52,7 @@ class CurrencyListVCViewModel {
             
             for (key, val) in rateDict {
                 let currencyName = String(key.dropFirst(3))
-                let currencyVal = val/(multiplier ?? 1)
+                let currencyVal = (val/(multiplier ?? 1))*(Double(self.enteredCurrency ?? "0") ?? 0)
                 rateArr.append((currencyName, currencyVal))
             }
             DispatchQueue.main.async {
