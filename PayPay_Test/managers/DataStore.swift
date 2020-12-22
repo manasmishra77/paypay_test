@@ -15,7 +15,7 @@ protocol DataStoreProtocol {
 
 class DataStore {
     static let shared = DataStore()
-    private let networkManager: NetworkManagerProtocol
+    var networkManager: NetworkManagerProtocol
     private let dataLoader: DataLoaderProtocol
     
     var currencyList: [Currency]!
@@ -29,7 +29,7 @@ class DataStore {
         return UserDefaults.standard
     }
     
-    private var exchangeRatesKey: String {
+    var exchangeRatesKey: String {
         return "ExchangeRates"
     }
 }

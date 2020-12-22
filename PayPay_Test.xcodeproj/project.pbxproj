@@ -21,6 +21,7 @@
 		565DA88525925A360004E53C /* ExchangeRate_30.json in Resources */ = {isa = PBXBuildFile; fileRef = 565DA88425925A360004E53C /* ExchangeRate_30.json */; };
 		565DA88D25925AFF0004E53C /* CurrencyListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565DA88C25925AFF0004E53C /* CurrencyListViewModelTests.swift */; };
 		565DA89225925BB00004E53C /* MockDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565DA89125925BB00004E53C /* MockDataStore.swift */; };
+		56923DEC25926DEA00D1F979 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56923DEB25926DEA00D1F979 /* DataStoreTests.swift */; };
 		56A0F3B125910B8A004D34A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0F3B025910B8A004D34A4 /* AppDelegate.swift */; };
 		56A0F3B825910B8A004D34A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A0F3B625910B8A004D34A4 /* Main.storyboard */; };
 		56A0F3BA25910B8C004D34A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A0F3B925910B8C004D34A4 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		565DA88425925A360004E53C /* ExchangeRate_30.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExchangeRate_30.json; sourceTree = "<group>"; };
 		565DA88C25925AFF0004E53C /* CurrencyListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModelTests.swift; sourceTree = "<group>"; };
 		565DA89125925BB00004E53C /* MockDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataStore.swift; sourceTree = "<group>"; };
+		56923DEB25926DEA00D1F979 /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
 		56A0F3AD25910B8A004D34A4 /* PayPay_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayPay_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A0F3B025910B8A004D34A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56A0F3B725910B8A004D34A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				56A0F3C725910B8C004D34A4 /* PayPay_TestTests.swift */,
 				56A0F3C925910B8C004D34A4 /* Info.plist */,
 				565DA88C25925AFF0004E53C /* CurrencyListViewModelTests.swift */,
+				56923DEB25926DEA00D1F979 /* DataStoreTests.swift */,
 			);
 			path = PayPay_TestTests;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56923DEC25926DEA00D1F979 /* DataStoreTests.swift in Sources */,
 				565DA89225925BB00004E53C /* MockDataStore.swift in Sources */,
 				565DA87A2592580A0004E53C /* MockDataGet.swift in Sources */,
 				565DA8792592580A0004E53C /* MockNetworkManager.swift in Sources */,
