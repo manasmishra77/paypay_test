@@ -8,8 +8,8 @@
 import UIKit
 
 protocol CurrencyListVCViewModelDelegate: AnyObject {
-    func currencyList(list: [Currency], with err: AppErrors?)
-    func exchangeRates(rates: ExchangeRates?, with err: AppErrors?)
+    func currencyListFetched(list: [Currency], with err: AppErrors?)
+    func exchangeRatesFetched(rates: [(String, Double)], currency: String, with err: AppErrors?)
 }
 
 
@@ -33,7 +33,7 @@ class CurrencyListVCViewModel {
         dataStore.getCurrencyList {[weak self] (list, err) in
             guard let self = self else {return}
             DispatchQueue.main.async {
-                self.delegate.currencyList(list: list, with: err)
+                self.delegate.currencyListFetched(list: list, with: err)
             }
         }
     }
@@ -41,21 +41,21 @@ class CurrencyListVCViewModel {
     func getExchangeRates() {
         dataStore.getExchangeRates {[weak self] (rates, err) in
             guard let self = self else {return}
-            DispatchQueue.main.async {
-                self.delegate.exchangeRates(rates: rates, with: err)
+            guard let rateDict = rates?.quotes else {
+                self.delegate.exchangeRatesFetched(rates: [], currency: self.selectedCurrencyID ?? "", with: AppErrors.noData(nil))
+                return
             }
+            let multiplier = rateDict["USD\(self.selectedCurrencyID ?? "")"]
+            var rateArr: [(String, Double)] = []
+            
+            for (key, val) in rateDict {
+                let currencyName = String(key.dropFirst(3))
+                let currencyVal = val/(multiplier ?? 1)
+                rateArr.append((currencyName, currencyVal))
+            }
+            self.delegate.exchangeRatesFetched(rates: rateArr, currency: self.selectedCurrencyID ?? "", with: nil)
         }
     }
-    
-    var exchangeRateListDict: [String: Double] {
-        var rateDict: [String: Double] = [:]
-        
-        return rateDict
-    }
-
-    
-    
-    
     
 }
 

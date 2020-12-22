@@ -15,7 +15,7 @@ class CurrencyListViewModel {
     var currencyList: [Currency] = []
     
     // used for exchange rate list
-    var exchangeRates: [String: Double] = [:]
+    var exchangeRates: [(String, Double)] = []
     var selectedCurrency: String = ""
     
     var listCount: Int {
@@ -25,7 +25,7 @@ class CurrencyListViewModel {
         return currencyList.count
     }
     
-    init(_ type: CurrencyList.ViewType, exchangeRates: [String: Double], currencyList: [Currency]) {
+    init(_ type: CurrencyList.ViewType, exchangeRates: [(String, Double)], currencyList: [Currency]) {
         self.viewType = type
         self.currencyList = currencyList
         self.exchangeRates = exchangeRates

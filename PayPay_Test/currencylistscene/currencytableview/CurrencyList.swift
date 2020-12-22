@@ -66,7 +66,7 @@ class CurrencyList: UIView {
         self.currencyCollectionView.reloadData()
     }
     
-    func reloadExchangeRateCollectionView(list: [String: Double], currency: String) {
+    func reloadExchangeRateCollectionView(list: [(String, Double)], currency: String) {
         self.viewModel.exchangeRates = list
         self.viewModel.selectedCurrency = currency
         self.titleLabel.text = self.viewModel.titleLabelText
@@ -96,19 +96,20 @@ extension CurrencyList: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if viewModel.viewType == .currencyList {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: currencyCellIdentifier, for: indexPath) as! CurrencyCollectionViewCell
-            cell.configureCell(country: "", currency: "")
-
+            let currency = self.viewModel.currencyList[indexPath.row]
+            cell.configureCell(country: currency.countryName ?? "", currency: currency.countryCode ?? "")
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: exchangeRateCellIdentifier, for: indexPath) as! ExchangeRateCollectionViewCell
-            cell.configureCell(val: 0, name: "")
+            let rate = self.viewModel.exchangeRates[indexPath.row]
+            cell.configureCell(val: rate.1, name: rate.0)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if viewModel.viewType == .currencyList {
-            delegate.itemSelected(id: "")
+            delegate.itemSelected(id: self.viewModel.currencyList[indexPath.row].countryCode ?? "")
         }
     }
 

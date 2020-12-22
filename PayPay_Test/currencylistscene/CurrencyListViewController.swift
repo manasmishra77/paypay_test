@@ -56,7 +56,7 @@ class CurrencyListViewController: UIViewController {
                 
         let size = CGSize(width: self.bodyContainer.frame.width - 20, height: 50)
         
-        body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.currencyList, currencyList: [], exchangeRates: [:])
+        body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.currencyList, currencyList: [], exchangeRates: [:], currency: "")
         self.currencyListView = body
         body.isHidden = true
     }
@@ -65,7 +65,7 @@ class CurrencyListViewController: UIViewController {
         let body = CurrencyList.instanceFromNib()
         body.addAsSubViewWithConstraints(self.bodyContainer)
         let size = CGSize(width: self.bodyContainer.frame.width/2 - 5, height: self.bodyContainer.frame.width/2 - 5)
-        body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.currencyList, currencyList: [], exchangeRates: [:])
+        body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.currencyList, currencyList: [], exchangeRates: [:], currency: "")
         self.exchangeRateView = body
         body.isHidden = true
     }
@@ -85,7 +85,7 @@ extension CurrencyListViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         viewModel.enteredCurrency = textField.text
-        self.exchangeRateView.reloadExchangeRateCollectionView(list: viewModel.exchangeRateListDict)
+        self.viewModel.getExchangeRates()
     }
 }
 
@@ -96,21 +96,25 @@ extension CurrencyListViewController: CurrencyListDelegate {
         self.cuurencySelectionButton.setTitle(id, for: .normal)
         self.viewModel.selectedCurrencyID = id
     }
-    
-    func callForNextPageData() {
-    }
 }
 
 extension CurrencyListViewController: CurrencyListVCViewModelDelegate {
-    func currencyList(list: [Currency], with err: AppErrors?) {
-        
+    func currencyListFetched(list: [Currency], with err: AppErrors?) {
+        if let err = err {
+            self.showAlert(withTitle: "Failed", withMessage: err.msg)
+        } else {
+            self.currencyListView.reloadCurrencyListCollectionView(list: list)
+        }
     }
     
-    func exchangeRates(rates: ExchangeRates?, with err: AppErrors?) {
-        
+    func exchangeRatesFetched(rates: [(String, Double)], currency: String, with err: AppErrors?) {
+        if let err = err {
+            self.showAlert(withTitle: "Failed", withMessage: err.msg)
+        } else {
+            self.exchangeRateView.reloadExchangeRateCollectionView(list: rates, currency: currency)
+        }
+
     }
-    
-    
     
 }
 
