@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CurrencyListDelegate: AnyObject {
-    func itemSelected(id: String)
+    func itemSelected(id: String, countryName: String)
 }
 
 class CurrencyList: UIView {
@@ -109,7 +109,7 @@ extension CurrencyList: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if viewModel.viewType == .currencyList {
-            delegate.itemSelected(id: self.viewModel.currencyList[indexPath.row].countryCode ?? "")
+            delegate.itemSelected(id: self.viewModel.currencyList[indexPath.row].countryCode ?? "", countryName: self.viewModel.currencyList[indexPath.row].countryName ?? "")
         }
     }
 

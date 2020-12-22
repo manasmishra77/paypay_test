@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configureRootVC() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let vc = CurrencyListViewController()
-        let navvc = UINavigationController(rootViewController: vc)
+        //let navvc = UINavigationController(rootViewController: vc)
         
-        self.window?.rootViewController = navvc
+        self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
     }
 

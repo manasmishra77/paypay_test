@@ -94,8 +94,8 @@ extension CurrencyListViewController: UITextFieldDelegate {
 
 extension CurrencyListViewController: CurrencyListDelegate {
     
-    func itemSelected(id: String) {
-        self.cuurencySelectionButton.setTitle(id, for: .normal)
+    func itemSelected(id: String, countryName: String) {
+        self.cuurencySelectionButton.setTitle("\(countryName)-\(id)", for: .normal)
         self.viewModel.selectedCurrencyID = id
     }
 }
