@@ -38,7 +38,7 @@ class CurrencyList: UIView {
     weak var delegate: CurrencyListDelegate!
     
     
-    func configureView(delegate: CurrencyListDelegate, itemSize: CGSize, linespacing: CGFloat = 20, itemspacing: CGFloat = 20, viewType: ViewType, currencyList: [Currency], exchangeRates: [(String, Double)], currency: String) {
+    func configureView(delegate: CurrencyListDelegate, itemSize: CGSize, linespacing: CGFloat = 10, itemspacing: CGFloat = 10, viewType: ViewType, currencyList: [Currency], exchangeRates: [(String, Double)], currency: String) {
         
         self.delegate = delegate
         self.linespacing = linespacing

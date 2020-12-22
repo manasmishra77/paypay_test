@@ -65,7 +65,7 @@ class CurrencyListViewController: UIViewController {
     func configureExchangeRatesList() {
         let body = CurrencyList.instanceFromNib()
         body.addAsSubViewWithConstraints(self.bodyContainer)
-        let size = CGSize(width: self.bodyContainer.frame.width/2 - 10, height: 70)
+        let size = CGSize(width: self.bodyContainer.frame.width/2 - 30, height: 70)
         body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.exchangeRates, currencyList: [], exchangeRates: [], currency: "")
         self.exchangeRateView = body
         body.isHidden = true

@@ -15,6 +15,12 @@
 		565DA83B2591DD110004E53C /* CurrencyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565DA8392591DD110004E53C /* CurrencyCollectionViewCell.xib */; };
 		565DA8462591DE8B0004E53C /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565DA8452591DE8B0004E53C /* CurrencyList.swift */; };
 		565DA84B2591DEA50004E53C /* CurrencyList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565DA84A2591DEA50004E53C /* CurrencyList.xib */; };
+		565DA86F259257F30004E53C /* ExchangeRateAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 565DA86B259257F30004E53C /* ExchangeRateAll.json */; };
+		565DA8792592580A0004E53C /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565DA8772592580A0004E53C /* MockNetworkManager.swift */; };
+		565DA87A2592580A0004E53C /* MockDataGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565DA8782592580A0004E53C /* MockDataGet.swift */; };
+		565DA88525925A360004E53C /* ExchangeRate_30.json in Resources */ = {isa = PBXBuildFile; fileRef = 565DA88425925A360004E53C /* ExchangeRate_30.json */; };
+		565DA88D25925AFF0004E53C /* CurrencyListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565DA88C25925AFF0004E53C /* CurrencyListViewModelTests.swift */; };
+		565DA89225925BB00004E53C /* MockDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565DA89125925BB00004E53C /* MockDataStore.swift */; };
 		56A0F3B125910B8A004D34A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0F3B025910B8A004D34A4 /* AppDelegate.swift */; };
 		56A0F3B825910B8A004D34A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A0F3B625910B8A004D34A4 /* Main.storyboard */; };
 		56A0F3BA25910B8C004D34A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A0F3B925910B8C004D34A4 /* Assets.xcassets */; };
@@ -63,6 +69,12 @@
 		565DA8392591DD110004E53C /* CurrencyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCollectionViewCell.xib; sourceTree = "<group>"; };
 		565DA8452591DE8B0004E53C /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
 		565DA84A2591DEA50004E53C /* CurrencyList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyList.xib; sourceTree = "<group>"; };
+		565DA86B259257F30004E53C /* ExchangeRateAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExchangeRateAll.json; sourceTree = "<group>"; };
+		565DA8772592580A0004E53C /* MockNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
+		565DA8782592580A0004E53C /* MockDataGet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataGet.swift; sourceTree = "<group>"; };
+		565DA88425925A360004E53C /* ExchangeRate_30.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExchangeRate_30.json; sourceTree = "<group>"; };
+		565DA88C25925AFF0004E53C /* CurrencyListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModelTests.swift; sourceTree = "<group>"; };
+		565DA89125925BB00004E53C /* MockDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataStore.swift; sourceTree = "<group>"; };
 		56A0F3AD25910B8A004D34A4 /* PayPay_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayPay_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A0F3B025910B8A004D34A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56A0F3B725910B8A004D34A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,6 +128,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		565DA867259257F30004E53C /* model_data */ = {
+			isa = PBXGroup;
+			children = (
+				565DA86B259257F30004E53C /* ExchangeRateAll.json */,
+				565DA88425925A360004E53C /* ExchangeRate_30.json */,
+			);
+			path = model_data;
+			sourceTree = "<group>";
+		};
+		565DA8762592580A0004E53C /* mock */ = {
+			isa = PBXGroup;
+			children = (
+				565DA8772592580A0004E53C /* MockNetworkManager.swift */,
+				565DA8782592580A0004E53C /* MockDataGet.swift */,
+				565DA89125925BB00004E53C /* MockDataStore.swift */,
+			);
+			path = mock;
+			sourceTree = "<group>";
+		};
 		56A0F3A425910B8A004D34A4 = {
 			isa = PBXGroup;
 			children = (
@@ -157,8 +188,11 @@
 		56A0F3C625910B8C004D34A4 /* PayPay_TestTests */ = {
 			isa = PBXGroup;
 			children = (
+				565DA8762592580A0004E53C /* mock */,
+				565DA867259257F30004E53C /* model_data */,
 				56A0F3C725910B8C004D34A4 /* PayPay_TestTests.swift */,
 				56A0F3C925910B8C004D34A4 /* Info.plist */,
+				565DA88C25925AFF0004E53C /* CurrencyListViewModelTests.swift */,
 			);
 			path = PayPay_TestTests;
 			sourceTree = "<group>";
@@ -363,6 +397,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565DA86F259257F30004E53C /* ExchangeRateAll.json in Resources */,
+				565DA88525925A360004E53C /* ExchangeRate_30.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +440,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565DA89225925BB00004E53C /* MockDataStore.swift in Sources */,
+				565DA87A2592580A0004E53C /* MockDataGet.swift in Sources */,
+				565DA8792592580A0004E53C /* MockNetworkManager.swift in Sources */,
+				565DA88D25925AFF0004E53C /* CurrencyListViewModelTests.swift in Sources */,
 				56A0F3C825910B8C004D34A4 /* PayPay_TestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
