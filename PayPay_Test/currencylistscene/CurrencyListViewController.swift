@@ -87,6 +87,7 @@ extension CurrencyListViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         viewModel.enteredCurrency = textField.text
+        self.createSpinnerView()
         self.viewModel.getExchangeRates()
     }
 }
@@ -97,6 +98,7 @@ extension CurrencyListViewController: CurrencyListDelegate {
     func itemSelected(id: String, countryName: String) {
         self.cuurencySelectionButton.setTitle("\(countryName)-\(id)", for: .normal)
         self.viewModel.selectedCurrencyID = id
+        self.currencyListView.isHidden = true
     }
 }
 
@@ -110,6 +112,7 @@ extension CurrencyListViewController: CurrencyListVCViewModelDelegate {
     }
     
     func exchangeRatesFetched(rates: [(String, Double)], currency: String, with err: AppErrors?) {
+        self.removeSpinnerView()
         if let err = err {
             self.showAlert(withTitle: "Failed", withMessage: err.msg)
         } else {
