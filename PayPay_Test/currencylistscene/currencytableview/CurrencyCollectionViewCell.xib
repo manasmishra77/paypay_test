@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CurrencyCollectionViewCell" id="gTV-IL-0wX" customClass="CurrencyCollectionViewCell" customModule="PayPay_Test" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="592" height="58"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="592" height="58"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvG-Xe-kE3">
+                        <rect key="frame" x="0.0" y="0.0" width="592" height="58"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCo-aU-Qds">
+                                <rect key="frame" x="8" y="10" width="543.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqw-Oo-33D">
+                                <rect key="frame" x="556.5" y="10" width="27.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Nqw-Oo-33D" secondAttribute="trailing" constant="8" id="PcX-dl-OOJ"/>
+                            <constraint firstItem="Nqw-Oo-33D" firstAttribute="top" secondItem="mvG-Xe-kE3" secondAttribute="top" constant="10" id="REz-CW-b5c"/>
+                            <constraint firstItem="iCo-aU-Qds" firstAttribute="leading" secondItem="mvG-Xe-kE3" secondAttribute="leading" constant="8" id="Ubl-cG-nEl"/>
+                            <constraint firstItem="Nqw-Oo-33D" firstAttribute="leading" secondItem="iCo-aU-Qds" secondAttribute="trailing" constant="5" id="iI7-Kn-LXw"/>
+                            <constraint firstItem="iCo-aU-Qds" firstAttribute="top" secondItem="mvG-Xe-kE3" secondAttribute="top" constant="10" id="xB8-7b-Cjf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="mvG-Xe-kE3" secondAttribute="bottom" id="0zt-RG-tDc"/>
+                <constraint firstItem="mvG-Xe-kE3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2rm-fB-WDX"/>
+                <constraint firstAttribute="trailing" secondItem="mvG-Xe-kE3" secondAttribute="trailing" id="dco-QA-a7R"/>
+                <constraint firstItem="mvG-Xe-kE3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zsf-93-dYm"/>
+            </constraints>
+            <size key="customSize" width="592" height="58"/>
+            <connections>
+                <outlet property="countryName" destination="iCo-aU-Qds" id="IXh-sc-NaY"/>
+                <outlet property="currencyName" destination="Nqw-Oo-33D" id="RI9-jp-oGC"/>
+            </connections>
+            <point key="canvasLocation" x="530.43478260869574" y="148.66071428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>

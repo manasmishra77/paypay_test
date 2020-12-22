@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol MovieListVCViewModelDelegate: AnyObject {
+protocol CurrencyListVCViewModelDelegate: AnyObject {
     func newMovieFetchingStarted()
     func movieDataFetched(with err: AppError?)
 }
 
 
 
-class MovieListVCViewModel {
+class CurrencyListVCViewModel {
     
     var recommendations: [String] = []
     var movieResponse: MovieListResponse?
