@@ -1,0 +1,13 @@
+Pods/
+UserInterfaceState.xcuserstate
+.DS_Store
+*.xcsettings
+*.xcbkptlist
+*.xcuserstate
+*.xcsheme
+*/xcshareddata
+*/xcuserdata
+Podfile.lock
+fastlane/
+Gemfile
+~       
