@@ -49,10 +49,11 @@ class CurrencyListVCViewModel {
             }
             let multiplier = rateDict["USD\(self.selectedCurrencyID ?? "")"]
             var rateArr: [(String, Double)] = []
+            let enteredVal = Double(self.enteredCurrency ?? "0") ?? 0
             
             for (key, val) in rateDict {
                 let currencyName = String(key.dropFirst(3))
-                let currencyVal = (val/(multiplier ?? 1))*(Double(self.enteredCurrency ?? "0") ?? 0)
+                let currencyVal = (val/(multiplier ?? 1))*enteredVal
                 rateArr.append((currencyName, currencyVal))
             }
             DispatchQueue.main.async {
