@@ -8,25 +8,54 @@
 import Foundation
 
 protocol DataStoreProtocol {
-    func getExchangeRates(completion:  @escaping (_ rates: ExchangeRates?, _ err: Error?) -> ())
+    func getExchangeRates(completion:  @escaping (_ rates: ExchangeRates?, _ err: AppErrors?) -> ())
+    func getCurrencyList(completion:  @escaping (_ list: [Currency], _ err: AppErrors?) -> ())
+
 }
 
 class DataStore {
     static let shared = DataStore()
-    let networkManager: NetworkManagerProtocol
-    private init(networkManager: NetworkManagerProtocol = NetworkManager.shared) {
+    private let networkManager: NetworkManagerProtocol
+    private let dataLoader: DataLoaderProtocol
+    
+    var currencyList: [Currency]!
+    
+    
+    private init(networkManager: NetworkManagerProtocol = NetworkManager.shared, dataLoader: DataLoaderProtocol = DataLoader.shared) {
         self.networkManager = networkManager
+        self.dataLoader = dataLoader
     }
     var userDefault: UserDefaults {
         return UserDefaults.standard
     }
     
-    var exchangeRatesKey: String {
+    private var exchangeRatesKey: String {
         return "ExchangeRates"
     }
 }
+
+
+
 extension DataStore: DataStoreProtocol {
-    func getExchangeRates(completion: @escaping (ExchangeRates?, Error?) -> ()) {
+    func getCurrencyList(completion: @escaping ([Currency], AppErrors?) -> ()) {
+        if self.currencyList != nil {
+            completion(currencyList, nil)
+            return
+        }
+        
+        let bundle = Bundle(for: type(of: self))
+        let list = dataLoader.loadModel(ModelJSONPath.currencyList.rawValue, as: [Currency].self, bundle: bundle)
+        if let currencyList = list.0 {
+            self.currencyList = currencyList
+            completion(currencyList, nil)
+            return
+        }
+        
+        return completion([], list.1)
+    }
+    
+    
+    func getExchangeRates(completion: @escaping (ExchangeRates?, AppErrors?) -> ()) {
         // check whether rates present in userdefault
         // if yes, than check the time stamp is not older than 30mins
         // else, fetch from server and save

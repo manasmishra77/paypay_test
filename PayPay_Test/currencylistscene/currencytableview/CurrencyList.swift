@@ -38,7 +38,7 @@ class CurrencyList: UIView {
     weak var delegate: CurrencyListDelegate!
     
     
-    func configureView(delegate: CurrencyListDelegate, itemSize: CGSize, linespacing: CGFloat = 20, itemspacing: CGFloat = 20, viewType: ViewType, currencyList: [Currency], exchangeRates: [String: Double]) {
+    func configureView(delegate: CurrencyListDelegate, itemSize: CGSize, linespacing: CGFloat = 20, itemspacing: CGFloat = 20, viewType: ViewType, currencyList: [Currency], exchangeRates: [String: Double], currency: String) {
         
         self.delegate = delegate
         self.linespacing = linespacing
@@ -46,6 +46,7 @@ class CurrencyList: UIView {
         self.itemSize = itemSize
         
         self.viewModel = CurrencyListViewModel(viewType, exchangeRates: exchangeRates, currencyList: currencyList)
+        self.viewModel.selectedCurrency = currency
         
         
         let currencycellNib = UINib(nibName: currencyCellIdentifier, bundle: nil)
@@ -57,7 +58,7 @@ class CurrencyList: UIView {
         currencyCollectionView.dataSource = self
         currencyCollectionView.reloadData()
         
-        self.titleLabel.text = (viewType == .currencyList) ? "Select Currency" : "Exchange rates for "
+        self.titleLabel.text = viewModel.titleLabelText
     }
     
     func reloadCurrencyListCollectionView(list: [Currency]) {
@@ -65,8 +66,10 @@ class CurrencyList: UIView {
         self.currencyCollectionView.reloadData()
     }
     
-    func reloadExchangeRateCollectionView(list: [String: Double]) {
+    func reloadExchangeRateCollectionView(list: [String: Double], currency: String) {
         self.viewModel.exchangeRates = list
+        self.viewModel.selectedCurrency = currency
+        self.titleLabel.text = self.viewModel.titleLabelText
         self.currencyCollectionView.reloadData()
     }
     
@@ -94,7 +97,7 @@ extension CurrencyList: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if viewModel.viewType == .currencyList {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: currencyCellIdentifier, for: indexPath) as! CurrencyCollectionViewCell
             cell.configureCell(country: "", currency: "")
-            cell.configureCell(name: movie.name, releaseDate: movie.releaseDate, posterImageURL: movie.posterImage, description: movie.desc)
+
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: exchangeRateCellIdentifier, for: indexPath) as! ExchangeRateCollectionViewCell

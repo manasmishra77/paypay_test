@@ -11,8 +11,12 @@ class CurrencyListViewModel {
     
     var viewType: CurrencyList.ViewType
     
+    // used for currency list
     var currencyList: [Currency] = []
+    
+    // used for exchange rate list
     var exchangeRates: [String: Double] = [:]
+    var selectedCurrency: String = ""
     
     var listCount: Int {
         if viewType == .exchangeRates {
@@ -25,6 +29,13 @@ class CurrencyListViewModel {
         self.viewType = type
         self.currencyList = currencyList
         self.exchangeRates = exchangeRates
+    }
+    
+    var titleLabelText: String {
+        if viewType == .currencyList {
+            return "Select Currency"
+        }
+        return "Exchange rates for \(selectedCurrency)"
     }
     
 }

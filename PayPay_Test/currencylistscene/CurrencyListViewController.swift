@@ -19,20 +19,23 @@ class CurrencyListViewController: UIViewController {
     @IBOutlet weak var currencyTF: UITextField!
     
     
-    weak var currencyListView: SearchList!
-    weak var exchangeRateView: SearchList!
+    weak var currencyListView: CurrencyList!
+    weak var exchangeRateView: CurrencyList!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        viewModel = CurrencyListVCViewModel(networkManager: AppManager.shared.networkManager, delegate: self)
+        viewModel = CurrencyListVCViewModel(delegate: self)
         
         configureView()
     }
     
 
     @IBAction func cuurencySelectionBtnTapped(_ sender: Any) {
+        self.currencyListView.isHidden = false
+        self.exchangeRateView.isHidden = true
+        self.currencyListView.reloadCurrencyListCollectionView(list: [])
     }
     
     
@@ -43,34 +46,31 @@ class CurrencyListViewController: UIViewController {
     }
     
     func configureBody() {
-        self.configureSearchList()
-        self.configureRecommendations()
+        self.configureCurrencyList()
+        self.configureExchangeRatesList()
     }
     
-    func configureSearchList() {
-        let body = SearchList.instanceFromNib()
+    func configureCurrencyList() {
+        let body = CurrencyList.instanceFromNib()
         body.addAsSubViewWithConstraints(self.bodyContainer)
                 
         let size = CGSize(width: self.bodyContainer.frame.width - 20, height: 50)
         
-        body.configureView(delegate: self, itemSize: size, viewType: .movieList, recommendations: [], movieList: [])
-        self.searchListView = body
+        body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.currencyList, currencyList: [], exchangeRates: [:])
+        self.currencyListView = body
         body.isHidden = true
     }
     
-    func configureRecommendations() {
-        let body = SearchList.instanceFromNib()
+    func configureExchangeRatesList() {
+        let body = CurrencyList.instanceFromNib()
         body.addAsSubViewWithConstraints(self.bodyContainer)
-        let size = CGSize(width: self.bodyContainer.frame.width - 20, height: 50)
-        body.configureView(delegate: self, itemSize: size, viewType: .recommendation, recommendations: [], movieList: [])
-        self.recommendationView = body
+        let size = CGSize(width: self.bodyContainer.frame.width/2 - 5, height: self.bodyContainer.frame.width/2 - 5)
+        body.configureView(delegate: self, itemSize: size, viewType: CurrencyList.ViewType.currencyList, currencyList: [], exchangeRates: [:])
+        self.exchangeRateView = body
         body.isHidden = true
     }
     
 }
-
-
-
 
 extension CurrencyListViewController: UITextFieldDelegate {
     
@@ -78,40 +78,40 @@ extension CurrencyListViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.searchListView.isHidden = true
-        self.recommendationView.isHidden = false
-        self.recommendationView.reloadRecomListCollectionView(list: viewModel.getRecomList())
+     
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        viewModel.enteredCurrency = textField.text
+        self.exchangeRateView.reloadExchangeRateCollectionView(list: viewModel.exchangeRateListDict)
     }
 }
 
 
-extension CurrencyListViewController: SearchListDelegate {
+extension CurrencyListViewController: CurrencyListDelegate {
     
     func itemSelected(id: String) {
-        self.searchTextField.text = id
-        viewModel.fetchMovie(searchKey: id)
+        self.cuurencySelectionButton.setTitle(id, for: .normal)
+        self.viewModel.selectedCurrencyID = id
     }
     
     func callForNextPageData() {
-        viewModel.fetchMovie(searchKey: searchTextField.text ?? "")
     }
 }
 
 extension CurrencyListViewController: CurrencyListVCViewModelDelegate {
-    func newMovieFetchingStarted() {
-        self.createSpinnerView()
+    func currencyList(list: [Currency], with err: AppErrors?) {
+        
     }
-    func movieDataFetched(with err: AppError?) {
-        self.removeSpinnerView()
-        if let err = err {
-            self.showAlert(withTitle: "Failed", withMessage: err.msg)
-        } else {
-            self.searchListView.isHidden = false
-            self.recommendationView.isHidden = true
-            self.searchListView.reloadSearchListCollectionView(list: viewModel.getMovieList())
-        }
+    
+    func exchangeRates(rates: ExchangeRates?, with err: AppErrors?) {
+        
     }
+    
+    
+    
 }
 
 

@@ -27,8 +27,6 @@
 		56A0F3F625910BE2004D34A4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0F3F225910BE2004D34A4 /* Extensions.swift */; };
 		56A0F3F725910BE2004D34A4 /* SpinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A0F3F325910BE2004D34A4 /* SpinnerViewController.xib */; };
 		56A0F40825910BF5004D34A4 /* CurrencyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0F3FE25910BF5004D34A4 /* CurrencyListViewModel.swift */; };
-		56A0F40E25910BF5004D34A4 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0F40425910BF5004D34A4 /* MovieListViewController.swift */; };
-		56A0F40F25910BF5004D34A4 /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A0F40525910BF5004D34A4 /* MovieListViewController.xib */; };
 		56A0F41025910BF5004D34A4 /* CurrencyListVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0F40625910BF5004D34A4 /* CurrencyListVCViewModel.swift */; };
 		56A0F41825910C01004D34A4 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0F41525910C01004D34A4 /* AppManager.swift */; };
 		56A0F41925910C01004D34A4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A0F41625910C01004D34A4 /* NetworkManager.swift */; };
@@ -83,8 +81,6 @@
 		56A0F3F225910BE2004D34A4 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		56A0F3F325910BE2004D34A4 /* SpinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerViewController.xib; sourceTree = "<group>"; };
 		56A0F3FE25910BF5004D34A4 /* CurrencyListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModel.swift; sourceTree = "<group>"; };
-		56A0F40425910BF5004D34A4 /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
-		56A0F40525910BF5004D34A4 /* MovieListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieListViewController.xib; sourceTree = "<group>"; };
 		56A0F40625910BF5004D34A4 /* CurrencyListVCViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyListVCViewModel.swift; sourceTree = "<group>"; };
 		56A0F41525910C01004D34A4 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		56A0F41625910C01004D34A4 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -199,10 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				56A0F3FC25910BF5004D34A4 /* currencytableview */,
-				56A0F40425910BF5004D34A4 /* MovieListViewController.swift */,
 				565DA8272591BB390004E53C /* CurrencyListViewController.swift */,
 				565DA8282591BB390004E53C /* CurrencyListViewController.xib */,
-				56A0F40525910BF5004D34A4 /* MovieListViewController.xib */,
 				56A0F40625910BF5004D34A4 /* CurrencyListVCViewModel.swift */,
 			);
 			path = currencylistscene;
@@ -362,7 +356,6 @@
 				565DA84B2591DEA50004E53C /* CurrencyList.xib in Resources */,
 				56A0F3BA25910B8C004D34A4 /* Assets.xcassets in Resources */,
 				56A0F3B825910B8A004D34A4 /* Main.storyboard in Resources */,
-				56A0F40F25910BF5004D34A4 /* MovieListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +382,6 @@
 			files = (
 				56A0F44525911DE7004D34A4 /* DataStore.swift in Sources */,
 				56A0F3F625910BE2004D34A4 /* Extensions.swift in Sources */,
-				56A0F40E25910BF5004D34A4 /* MovieListViewController.swift in Sources */,
 				56A0F3F525910BE2004D34A4 /* SpinnerViewController.swift in Sources */,
 				565DA8292591BB390004E53C /* CurrencyListViewController.swift in Sources */,
 				56A0F41925910C01004D34A4 /* NetworkManager.swift in Sources */,
